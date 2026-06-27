@@ -1,0 +1,233 @@
+body{
+    margin:40px;
+    max-width:900px;
+    background:#F5F2EA;
+}
+
+.tree{
+    font-family:"Courier New", monospace;
+    font-size:20px;
+    color:#2F2F2F;
+    line-height:1.3;
+    white-space:pre;
+
+    animation:fadeInTree .65s cubic-bezier(.22,1,.36,1);
+}
+
+.tree-animated{
+    display:none;
+    opacity:0;
+    transform:translateY(8px);
+}
+
+.tree-animated.show{
+    display:block;
+    animation:fadeInTree .65s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes fadeInTree{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.folder{
+    color:#2563EB;
+    font-weight:bold;
+}
+
+.file{
+    color:#15803D;
+}
+
+a,
+a:visited{
+    color:#15803D;
+    text-decoration:none;
+    transition:color .15s ease;
+}
+
+a:hover{
+    color:#166534;
+    text-decoration:underline;
+}
+
+::selection{
+    background:#2563EB;
+    color:white;
+}
+
+#boot{
+    font-family:"Courier New", monospace;
+    font-size:20px;
+    color:#2F2F2F;
+    white-space:pre;
+}
+
+.cursor{
+    display:none;
+    color:#2F2F2F;
+    animation:blink 1s steps(1) infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+
+/* ---------- Spotify Premium Effect ---------- */
+
+.spotify-link{
+    position:relative;
+    display:inline-block;
+    color:#15803D;
+    text-decoration:none;
+    overflow:hidden;
+
+    animation:spotifyGlow 2.5s ease-in-out infinite;
+}
+
+.spotify-link::after{
+    content:"";
+    position:absolute;
+
+    top:-35%;
+    left:-80%;
+
+    width:45%;
+    height:180%;
+
+    background:linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0) 20%,
+        rgba(255,255,255,.95) 50%,
+        rgba(255,255,255,0) 80%,
+        transparent 100%
+    );
+
+    transform:skewX(-20deg);
+    filter:blur(1px);
+
+    pointer-events:none;
+
+    animation:glassSweep 2.5s ease-in-out infinite;
+}
+
+
+/* ---------- Glow ---------- */
+
+@keyframes spotifyGlow{
+
+    0%,100%{
+        color:#15803D;
+        text-shadow:none;
+    }
+
+    35%{
+        color:#22C55E;
+        text-shadow:
+            0 0 5px rgba(34,197,94,.35),
+            0 0 10px rgba(34,197,94,.2);
+    }
+
+    /* Peak glow */
+    50%{
+        color:#22C55E;
+        text-shadow:
+            0 0 8px rgba(34,197,94,.65),
+            0 0 18px rgba(34,197,94,.35);
+    }
+
+    65%{
+        color:#15803D;
+        text-shadow:none;
+    }
+
+}
+
+
+/* ---------- Shimmer ---------- */
+
+@keyframes glassSweep{
+
+    0%,40%{
+        left:-80%;
+        opacity:0;
+    }
+
+    45%{
+        opacity:1;
+    }
+
+    75%{
+        left:140%;
+        opacity:1;
+    }
+
+    80%,100%{
+        left:140%;
+        opacity:0;
+    }
+
+}
+
+
+/* ---------- Equalizer ---------- */
+
+.equalizer{
+    display:inline-flex;
+    align-items:flex-end;
+    gap:2px;
+    margin-left:6px;
+    height:10px;
+
+    position:relative;
+    top:-2px;          /* move the bars up */
+}
+
+.equalizer span{
+    width:2px;
+    background:#1DB954;
+    border-radius:2px;
+    transform-origin:bottom;
+    animation:equalizer .9s ease-in-out infinite;
+}
+
+.equalizer span:nth-child(1){
+    height:4px;
+    animation-delay:0s;
+}
+
+.equalizer span:nth-child(2){
+    height:9px;
+    animation-delay:.15s;
+}
+
+.equalizer span:nth-child(3){
+    height:6px;
+    animation-delay:.3s;
+}
+
+.equalizer span:nth-child(4){
+    height:10px;
+    animation-delay:.45s;
+}
+
+@keyframes equalizer{
+    0%,100%{
+        transform:scaleY(.4);
+    }
+
+    50%{
+        transform:scaleY(1);
+    }
+}
