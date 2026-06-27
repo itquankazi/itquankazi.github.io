@@ -1,7 +1,12 @@
 body{
     margin:40px;
     max-width:900px;
-    background:#ECE0C8;
+    background-color: #F1E8D8;
+
+    background-image:
+        radial-gradient(rgba(0, 0, 0, 0.03) 0.6px, transparent 0.6px);
+
+    background-size: 12px 12px;
 }
 
 .tree{
